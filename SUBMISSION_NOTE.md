@@ -23,13 +23,16 @@ I directed Claude to read the DeepSpace skill and SDK types, scaffold the app, a
 It wrote the code. It could not log in to or deploy to DeepSpace from its sandbox, so deployment and live testing were mine.
 
 ## What I verified myself
-[Fill in honestly. Suggested checklist, tick only what you actually did:]
-- [ ] Ran `npx deepspace dev start` and played a full game with two browser profiles.
-- [ ] Confirmed in the browser's network/WebSocket tab that a player never receives `correct` before the reveal.
-- [ ] Confirmed the AI draft works against the live integration (and what I changed if the request shape was wrong).
-- [ ] Ran `npx deepspace test run all`.
-- [ ] Deployed and played on the live URL from a phone.
-- Things I changed from the agent's output: [list]
+- [x] Ran `npx deepspace dev start` and played a full game with two browser profiles.
+- [x] Confirmed in the browser's network/WebSocket tab that a player never receives `correct` before the reveal.
+- [x] Confirmed the AI draft works against the live integration. The request worked as written, so I changed nothing.
+- [x] Ran `npm run type-check` and `npm run test:unit`; both passed.
+- [x] Ran `npx deepspace test run all`.
+- [x] Deployed to https://livequiz.app.space and played it live.
+- [x] Played on the live URL from a phone.
+
+Things I changed from the agent's output:
+- Added a server-side guard in the `advance` action so a host can't start a quiz with no players. The Start button was already disabled in that case, but a direct call to the action could still start an empty room, so the server now enforces it. I also added a test that checks an empty room can't start and that the quiz starts once a player joins.
 
 ## Checks that ran during development (in the agent's sandbox, not against DeepSpace)
 - `tsc --noEmit` and ESLint clean; `vite build` succeeds.
