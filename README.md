@@ -2,8 +2,7 @@
 
 A real-time multiplayer quiz on DeepSpace. A host builds a quiz (by hand, or by pasting notes and letting AI draft the questions), shares a five-letter code, and players answer at the same time on their own devices. Scores are computed on the server and the leaderboard moves live.
 
-**Live:** `https://<name>.app.space` (add after deploy)
-
+**Live:** https://livequiz.app.space/
 ## How a game works
 
 1. **Host** creates a quiz at `/host`. Each question has four options and one correct answer. Optionally paste notes and click *Draft with AI*; the draft lands in the editor for review.
